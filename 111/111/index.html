@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QQ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧导航栏 -->
+        <div class="sidebar">
+            <div class="avatar">
+                <img src="./tub/图标2.jpg" alt="头像">
+            </div>
+            <div class="nav-items">
+                <a href="#message" class="nav-item active" data-page="message">消息</a>
+                <a href="#contacts" class="nav-item" data-page="contacts">联系人</a>
+                <a href="#moments" class="nav-item" data-page="moments">动态</a>
+            </div>
+        </div>
+
+        <!-- 内容区域 -->
+        <div id="content">
+            <!-- 消息页面 -->
+            <div class="page" id="message-page">
+                <div class="chat-list">
+                    <div class="search-bar">
+                        <input type="text" placeholder="搜索">
+                    </div>
+                    <div class="chat-item" onclick="showChat('deepseek', './tub/图标1.jpg')">
+                        <img src="./tub/图标1.jpg" alt="联系人头像">
+                        <div class="chat-info">
+                            <div class="chat-name">deepseek</div>
+                            <div class="chat-message">AI的未来充满无限可能！</div>
+                        </div>
+                        <div class="chat-time">12:30</div>
+                    </div>
+                    <div class="chat-item" onclick="showChat('柳如烟', './tub/图标3.jpg')">
+                        <img src="./tub/图标3.jpg" alt="联系人头像">
+                        <div class="chat-info">
+                            <div class="chat-name">柳如烟</div>
+                            <div class="chat-message">江湖路远，后会有期。</div>
+                        </div>
+                        <div class="chat-time">11:45</div>
+                    </div>
+                    <div class="chat-item" onclick="showChat('故事生成器', './tub/图标4.jpg')">
+                        <img src="./tub/图标4.jpg" alt="联系人头像">
+                        <div class="chat-info">
+                            <div class="chat-name">故事生成器</div>
+                            <div class="chat-message">让我为你创造一个故事！</div>
+                        </div>
+                        <div class="chat-time">10:15</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 联系人页面 -->
+            <div class="page" id="contacts-page" style="display: none;">
+                <div class="chat-list">
+                    <div class="search-bar">
+                        <input type="text" placeholder="搜索联系人">
+                    </div>
+                    <div class="chat-item" onclick="showChat()">
+                        <img src="./tub/图标1.jpg" alt="联系人头像">
+                        <div class="chat-info">
+                            <div class="chat-name">deepseek</div>
+                            <div class="chat-message">在线</div>
+                        </div>
+                    </div>
+                    <div class="chat-item" onclick="showChat()">
+                        <img src="./tub/图标3.jpg" alt="联系人头像">
+                        <div class="chat-info">
+                            <div class="chat-name">柳如烟</div>
+                            <div class="chat-message">离线</div>
+                        </div>
+                    </div>
+                    <div class="chat-item" onclick="showChat()">
+                        <img src="./tub/图标4.jpg" alt="联系人头像">
+                        <div class="chat-info">
+                            <div class="chat-name">故事生成器</div>
+                            <div class="chat-message">在线</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 动态页面 -->
+            <div class="page" id="moments-page" style="display: none;">
+                <div class="chat-list">
+                    <div class="search-bar">
+                        <input type="text" placeholder="搜索动态">
+                    </div>
+                    <div class="chat-item">
+                        <img src="./tub/图标1.jpg" alt="用户头像">
+                        <div class="chat-info">
+                            <div class="chat-name">deepseek</div>
+                            <div class="chat-message">分享了一张照片</div>
+                        </div>
+                        <div class="chat-time">1小时前</div>
+                    </div>
+                    <div class="chat-item">
+                        <img src="./tub/图标3.jpg" alt="用户头像">
+                        <div class="chat-info">
+                            <div class="chat-name">柳如烟</div>
+                            <div class="chat-message">更新了状态</div>
+                        </div>
+                        <div class="chat-time">2小时前</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 普通聊天窗口 -->
+            <div class="chat-window" id="chat-window" style="display: none;">
+                <div class="chat-header">
+                    <button class="back-btn" onclick="showPage('message')">返回</button>
+                    <div class="friend-info">
+                        <img src="https://placeholde.co/50x50" alt="好友头像" class="friend-avatar">
+                        <span class="friend-name">deepseek</span>
+                    </div>
+                    <button class="new-chat-btn" onclick="startNewChat()">开始新对话</button>
+                </div>
+                <div class="chat-messages">
+                    <div class="message friend">
+                        <img src="./tub/图标1.jpg" alt="好友头像" class="message-avatar">
+                        <div class="message-content">你好！</div>
+                    </div>
+                    <div class="message self">
+                        <div class="message-content">你好啊！</div>
+                        <img src="./tub/图标2.jpg" alt="我的头像" class="message-avatar">
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <textarea placeholder="输入消息..."></textarea>
+                    <button class="send-btn">发送</button>
+                </div>
+            </div>
+
+            <!-- 故事生成器聊天窗口 -->
+            <div class="chat-window" id="story-chat-window" style="display: none;">
+                <div class="chat-header">
+                    <button class="back-btn" onclick="showPage('message')">返回</button>
+                    <div class="friend-info">
+                        <img src="./tub/图标4.jpg" alt="故事生成器头像" class="friend-avatar">
+                        <span class="friend-name">故事生成器</span>
+                    </div>
+                    <button class="new-chat-btn" onclick="startNewStoryChat()">开始新故事</button>
+                </div>
+                <div class="chat-messages">
+                    <div class="message friend">
+                        <img src="./tub/图标4.jpg" alt="故事生成器头像" class="message-avatar">
+                        <div class="message-content">你好！我是故事生成器，让我为你创造一个精彩的故事吧！</div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <textarea placeholder="输入你想要的故事类型或主题..."></textarea>
+                    <button class="send-btn">发送</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧用户信息栏 -->
+        <div class="user-sidebar">
+            <div class="user-profile">
+                <img src="./tub/图标2.jpg" alt="用户头像" class="user-avatar">
+                <h2 class="user-name">我的昵称</h2>
+                <p class="user-status">在线</p>
+            </div>
+            <div class="user-info">
+                <div class="info-item">
+                    <span class="label">个性签名</span>
+                    <p class="value">这是我的个性签名</p>
+                </div>
+                <div class="info-item">
+                    <span class="label">地区</span>
+                    <p class="value">北京</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="chat.js"></script>
+    <script>
+        // 页面切换逻辑
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = item.getAttribute('data-page');
+                showPage(page);
+                
+                // 更新导航栏激活状态
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+
+        function showPage(pageId) {
+            // 隐藏所有页面
+            document.querySelectorAll('.page').forEach(page => page.style.display = 'none');
+            document.getElementById('chat-window').style.display = 'none';
+            
+            // 显示选中的页面
+            document.getElementById(`${pageId}-page`).style.display = 'block';
+        }
+
+        function showChat(friendName = 'deepseek', friendAvatar = 'https://placeholde.co/50x50') {
+            // 隐藏所有页面和聊天窗口
+            document.querySelectorAll('.page').forEach(page => page.style.display = 'none');
+            document.getElementById('chat-window').style.display = 'none';
+            document.getElementById('story-chat-window').style.display = 'none';
+            
+            // 根据好友类型显示不同的聊天窗口
+            if (friendName === '故事生成器') {
+                // 显示故事生成器聊天窗口
+                document.getElementById('story-chat-window').style.display = 'flex';
+                switchFriend('storyteller');
+            } else {
+                // 显示普通聊天窗口
+                const chatWindow = document.getElementById('chat-window');
+                chatWindow.style.display = 'flex';
+
+                // 更新聊天窗口的好友信息
+                const friendNameElement = chatWindow.querySelector('.friend-name');
+                const friendAvatarElement = chatWindow.querySelector('.friend-avatar');
+                friendNameElement.textContent = friendName;
+                friendAvatarElement.src = friendAvatar;
+
+                // 切换到对应好友的聊天并加载历史记录
+                let friendId = friendName === 'deepseek' ? 'deepseek' : 'liuruyan';
+                switchFriend(friendId);
+            }
+            // 隐藏所有页面
+            document.querySelectorAll('.page').forEach(page => page.style.display = 'none');
+        }
+
+        // 默认显示消息页面
+        showPage('message');
+    </script>
+</body>
+</html>
